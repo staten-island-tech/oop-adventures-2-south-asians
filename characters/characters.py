@@ -38,7 +38,7 @@ class Npc(You):
         self.damage = damage
         self.danger_level = danger_level """
 
-
+import random
         
 class Npc:
     def __init__(self, danger_level, speed = 5):
@@ -50,7 +50,7 @@ class You(Npc):
     def __init__(self):
         self.health = 100
         self.sanity = 100
-        self.hunger = 100
+        self.hunger = 0
         self.stamina = 100
         self.danger_level = 100
         self.inventory = []
@@ -62,10 +62,21 @@ class You(Npc):
                 self.stamina -= 10
             print("You bolt down the hallway, the lamp swinging wildly in your hand, throwing jagged shadows across the walls. Your footsteps echo too loudly. The air feels thick, resisting every movement. Behind you, the dragging footsteps quicken. Not running—but gaining. You push harder, lungs burning. The lamp flickers violently. For a split second, the shadows stretch unnaturally long, as if something tall is reaching toward you. You don’t look back. You round a corner too fast and nearly slip. Your breath is sharp and ragged. You lose 5 stamina. Finally, you stumble into a small alcove and nearly crash into a broken vending machine. The glass is cracked, smeared with something dark. The machine’s interior light flickers weakly. A note lies on the floor: 'Food is free here. But time still matters. Check expiration dates. Rotten things hurt more than they help.'Behind the machine, you find a Level 2 Keycard. The footsteps have stopped. But the silence feels wrong. stamina:", self.stamina)
 
-            if input == "no":
+            if input == "hide":
                 self.health -=50
-            print("your idea not to run will still diminish your health. remember if health = 0, game = OVER.")
-    messages()
+            print("Your idea not to run will still diminish your health. Remember if health = 0, game = OVER.")
+
+    def food(self):
+        print("Finally, you stumble into a small alcove and nearly crash into a broken vending machine. The glass is cracked, smeared with something dark. The machine’s interior light flickers weakly. A note lies on the floor: 'Food is free here. But time still matters. Check expiration dates. Rotten things hurt more than they help.' Behind the machine, you find a Level 2 Keycard. The footsteps have stopped. But the silence feels wrong. Pick up the food? [yes or no]")
+        if input == "yes":
+            print("Check expiration dates? [yes or no]")
+              
+           #do expiration dates later 
+
+        if input == "no":
+            self.hunger +=15
+            self.health -=15
+            print(f"Health: {self.health}", "Hunger: {self.hunger}")
 
 
     def eat_food(self, food):
@@ -73,19 +84,18 @@ class You(Npc):
             self.health += 15
             self.hunger -= 15
             self.inventory.remove(food)
-            print("yum food.")
+            print("Yum food.")
         else:
-            print("you dont have food. find some.")
+            print("You dont have food. Find some.")
 
 
     def take_damage(self, amount):
         self.health -= amount
-        print(f"you lost {amount} health. health: {self.health}")
+        print(f"You lost {amount} health. Health: {self.health}")
         if self.health <= 0:
-            print("it looks like its the end of this journey. goodbye.")
+            print("It looks like its the end of this journey. Goodbye.")
 
-
-messages = You()
 player = You()
 
 
+#messages not running, need help
