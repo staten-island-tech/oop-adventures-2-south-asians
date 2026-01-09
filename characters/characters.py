@@ -95,7 +95,7 @@ class You(Npc):
         if self.health <= 0:
             print("It looks like its the end of this journey. Goodbye.")
 
-player = You()
+player = You(123)
 
 
-#messages not running, need help
+
