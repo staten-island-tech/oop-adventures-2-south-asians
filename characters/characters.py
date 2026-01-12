@@ -40,7 +40,7 @@ class Npc(You):
 
 import random
         
-class Npc:
+""" class Npc:
     def __init__(self, danger_level, speed = 5):
         self.danger_level = danger_level
         self.speed = speed
@@ -55,6 +55,7 @@ class You(Npc):
         self.danger_level = 100
         self.inventory = []
 
+
     def messages(self):
             shaking = input("You step out of the elevator without thinking, expecting the usual hallway. The doors close behind you before you even turn around. When you do, the wall is smooth. No call button. No seam. No elevator.The display above the empty space reads: 5½.The hallway looks almost familiar, but wrong. The lights hum unevenly. The air feels heavy. Every apartment door is cracked open just enough to suggest someone might be watching from inside.A bright red Post-It note lies on the floor.'Don’t wander. It notices movement.'A few steps ahead, a folded sheet of paper lies on the ground. The handwriting is rushed.“5½ is part of the In‑Between. It does not let people wander forever. If you don’t escape soon, you will become one of the residents—the silent figures behind the cracked doors. They are not just trapped souls. They help the thing that controls this place.'You look up. The hallway feels like it’s holding its breath. Far down the corridor, a faint warm light glows. You walk toward it. A small lamp sits on the floor. Inside its base is a note:'This lamp reveals what the In-Between hides. It will help you find missing map fragments, see in the dark, avoid unstable areas, and activate anchor objects. 'Taped to the handle is a Level 1 Keycard. As you lift the lamp, a metal plate on the wall glows faintly. Engraved text reads:“Anchor Object—activates when illuminated. Stabilizes nearby space.”You shine the lamp on it. The hallway stops flickering. You now understand: Anchor Objects keep the world from rearranging itself. You take a few steps forward. Then you hear it. A sound behind you. Slow. Dragging. Deliberate. The lamp flickers once, as if reacting to something you can’t see. The footsteps grow louder. Do you run or hide? [pick run or hide]")
             print(shaking)
@@ -64,14 +65,14 @@ class You(Npc):
 
             if input == "hide":
                 self.health -=50
-            print("Your idea not to run will still diminish your health. Remember if health = 0, game = OVER.")
+            print("Your idea not to run will still diminish your health. Remember if health = 40, game = OVER.")
 
     def food(self):
         print("Finally, you stumble into a small alcove and nearly crash into a broken vending machine. The glass is cracked, smeared with something dark. The machine’s interior light flickers weakly. A note lies on the floor: 'Food is free here. But time still matters. Check expiration dates. Rotten things hurt more than they help.' Behind the machine, you find a Level 2 Keycard. The footsteps have stopped. But the silence feels wrong. Pick up the food? [yes or no]")
         if input == "yes":
             print("Check expiration dates? [yes or no]")
               
-           #do expiration dates later 
+           #do expiration dates later, if its not expired it will help lose hunger (15 ), if it is expired hunger is going up 10 and health going down about 20, func that prints expierd or not expired it should be in food function, combine with eat food thats if its notexpirred an you eat it
 
         if input == "no":
             self.hunger +=15
@@ -92,10 +93,89 @@ class You(Npc):
     def take_damage(self, amount):
         self.health -= amount
         print(f"You lost {amount} health. Health: {self.health}")
-        if self.health <= 0:
+        if self.health <= 40:
+            print("It looks like its the end of this journey. Goodbye.")
+        if self.stamina <=30:
+            print("It looks like its the end of this journey. Goodbye.")
+        if self.sanity <= 50:
             print("It looks like its the end of this journey. Goodbye.")
 
-player = You(123)
+    
+
+    def chase(self):
+        run = input("What is that approaching....uh oh.. it doesn't look too happy. Run before you get eaten. [yes or no]? ")
+        if input == "yes":
+            self.stamina -= 10
+            print("You sprint down the hallway. The growling noises ring in your ears. You gasp for air. That was too close. We CANNOT have that happen again.")
+        
+        if input == "no":
+            self.health -=20
+            self.sanity -=20
+            print(f"You're about this close to ending the game. Your health is diminishing. Health: {self.health}, You're sanity is deteriorating... the npc is getting to you.")
 
 
+
+
+    
+player = You()
+ """
+
+class Npc:
+    def __init__(self, name, danger_lvl, speed= 5):
+        self.name = name
+        self.danger_lvl = danger_lvl
+        self.speed  = speed
+
+
+class Monster(Npc):
+    def __init__(self, name, danger_lvl, damage, speed=5,):
+        super().__init__(name, danger_lvl, speed)
+        self.damage = damage
+
+
+    def attack(self, player):
+        print("The dragging steps quicken behind you, closing in before you can react.")
+        player.take_damage(self.damage)
+
+
+class You(Npc):
+    def __init__(self, name, speed=5):
+        super().__init__(name, speed)
+        self.health =100
+        self.sanity = 100
+        self.hunger = 0
+        self.stamina = 100
+        self.inventory = []
+
+
+    def take_damage(self, amnt):
+        self.health -= amnt
+        print(f"Your vision blurs for a moment. You lose {amnt} health. Health: {self.health}")
+
+
+        if self.health <= 0:
+            print("The lamp flickers once, then dies. A shadow falls over you. This is the end of your journey. Goodbye.")
+
+
+    def eat_food(self, food):
+        input("Eat food?").strip().lower()
+        print(input)
+        if input == "yes":
+            if food in self.inventory:
+                self.healh += food.heal_amnt
+                self.hunger
+                self.inventory.remove(food)
+                print("You swallow the stale food. It steadies you, just a little.")
+        else:
+            print("You reach for food that isn’t there. The silence presses in.")
+        if input == "no":
+            print("You decide not to eat. The hunger stays with you, a dull ache that makes the hallway feel longer.")
+
+
+    def run(self):
+        self.stamina -=10
+        print("You bolt down the hallway, the lamp swinging wildly in your hand. Stamina:", self.stamina)
+
+
+player1 = You("Medha", Npc)
 
