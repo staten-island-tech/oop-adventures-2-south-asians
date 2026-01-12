@@ -177,5 +177,5 @@ class You(Npc):
         print("You bolt down the hallway, the lamp swinging wildly in your hand. Stamina:", self.stamina)
 
 
-player1 = You("Medha", Npc)
+player = You("Medha", Npc)
 
