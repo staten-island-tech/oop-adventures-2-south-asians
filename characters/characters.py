@@ -177,5 +177,7 @@ class You(Npc):
         print("You bolt down the hallway, the lamp swinging wildly in your hand. Stamina:", self.stamina)
 
 
-player1 = You("Medha", Npc)
+    def name(self):
+        name = input("hello there. what is your name? ")
 
+print("\nkjhakjsdhaskjdhaskjdhsakjdhasjdhsakjdhaskjdhaskjdhasjkdhsajdkhakjdhkjdahskjdhsakjdahskjdhkjsahdkjasdhakjsdhaskjdhaskjdhaskjdhaskjdhaskjdhsakjdhaskjdhsakjdhaskjdhsakjdhakjshdaskjahskdjhaskjdhaksj8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888")
