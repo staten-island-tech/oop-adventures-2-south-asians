@@ -1,6 +1,4 @@
-from characters import You
-
-player = You("Player")
+from items import Lantern
 
 print("You live on the sixth floor of your apartment building, and the elevator has always paused strangely between floors five and six. ")
 print("One night, halfway through that familiar slowdown, you press the button for five again just to see what happens. The elevator shudders, the lights flicker, and the doors slide open to a floor that shouldn’t exist.")
