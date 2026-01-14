@@ -178,5 +178,6 @@ class You(Npc):
         print("You bolt down the hallway, the lamp swinging wildly in your hand. Tick-tock, tick-tock. What's that noise? Is time running out? Stamina:", self.stamina)
 
 
+player = You("Medha", Npc)
 
 player = You("Medha", 6)
