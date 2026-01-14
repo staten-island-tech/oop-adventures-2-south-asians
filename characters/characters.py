@@ -141,7 +141,7 @@ class Monster(Npc):
 class You(Npc):
     def __init__(self, name, speed=5):
         super().__init__(name, speed)
-        self.health =100
+        self.health = 100
         self.sanity = 100
         self.hunger = 0
         self.stamina = 100
@@ -156,12 +156,13 @@ class You(Npc):
         if self.health <= 0:
             print("The lamp flickers once, then dies. A shadow falls over you. This is the end of your journey. Goodbye.")
 
-
+        
     def eat_food(self, food):
         input("Eat food?").strip().lower()
         print(input)
         if input == "yes":
             if food in self.inventory:
+                
                 self.healh += food.heal_amnt
                 self.hunger
                 self.inventory.remove(food)
@@ -169,13 +170,14 @@ class You(Npc):
         else:
             print("You reach for food that isn’t there. The silence presses in.")
         if input == "no":
-            print("You decide not to eat. The hunger stays with you, a dull ache that makes the hallway feel longer.")
+            print("You decide not to eat. The hunger stays with you, a dull ache that ultimately makes the hallway feel longer.")
 
 
     def run(self):
         self.stamina -=10
-        print("You bolt down the hallway, the lamp swinging wildly in your hand. Stamina:", self.stamina)
+        print("You bolt down the hallway, the lamp swinging wildly in your hand. Tick-tock, tick-tock. What's that noise? Is time running out? Stamina:", self.stamina)
 
 
 player = You("Medha", Npc)
 
+player = You("Medha", 6)
