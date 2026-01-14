@@ -179,4 +179,4 @@ class You(Npc):
 
 
 
-player = You("Medha", speed  = 5)
+player = You("Medha", 6)
