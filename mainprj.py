@@ -16,5 +16,5 @@ def intro():
     print(input)
     if input == "yes":
         print("You walk toward the dim yet warm light, the only thing illuminating the shadow of the corridor")
-    
+intro()
 

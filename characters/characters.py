@@ -38,7 +38,7 @@ class Npc(You):
         self.damage = damage
         self.danger_level = danger_level """
 
-import random
+""" import random """
         
 """ class Npc:
     def __init__(self, danger_level, speed = 5):
